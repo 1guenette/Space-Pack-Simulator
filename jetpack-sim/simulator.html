@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<!-- 
+		The MIT License
+		Copyright © 2018 Jacob Perin
+		Copyright © 2010-2018 three.js authors
+
+		Permission is hereby granted, free of charge, to any person obtaining a copy
+		of this software and associated documentation files (the "Software"), to deal
+		in the Software without restriction, including without limitation the rights
+		to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+		copies of the Software, and to permit persons to whom the Software is
+		furnished to do so, subject to the following conditions:
+
+		The above copyright notice and this permission notice shall be included in
+		all copies or substantial portions of the Software.
+
+		THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+		IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+		FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+		AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+		LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+		OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+		THE SOFTWARE.
+		--> 
+
+		<!-- 
+		This is modified version of:
+			https://threejs.org/examples/?q=contro#misc_controls_fly
+		cloned from:
+			https://github.com/mrdoob/three.js/blob/master/examples/misc_controls_fly.html
+		----
+
+		This code has been modified to meet our prototype criteria 
+		-->
+
+		<title>Jetpack Simulator</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+
+        <link rel="stylesheet" href="styles/styles.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		<script src="build/three.js"></script>
+
+		<script src="js/controls/FlyControls.js"></script>
+        <script src="js/controls/ExternalSystems.js"></script>
+
+        <script src="js/models/SpaceshipModel.js"></script>
+
+		<script src="js/shaders/CopyShader.js"></script>
+		<script src="js/shaders/FilmShader.js"></script>
+
+		<script src="js/postprocessing/EffectComposer.js"></script>
+		<script src="js/postprocessing/ShaderPass.js"></script>
+		<script src="js/postprocessing/MaskPass.js"></script>
+		<script src="js/postprocessing/RenderPass.js"></script>
+		<script src="js/postprocessing/FilmPass.js"></script>
+        
+		<script src="js/WebGL.js"></script>
+        
+        <script src="js/Renderings/Render.js"></script>
+
+
+
+	</head>
+
+	<body>
+        <div id="top-border">&nbsp;</div>
+		<div id="bot-border">&nbsp;</div>
+		<div id="left-border">&nbsp;</div>
+		<div id="right-border">&nbsp;</div>
+
+		<div id="info">
+			<div>
+		    <b>WASD</b> Conditional Operators Move/Rotate, <b>Q</b> Pitch/Yaw Mode, <b>E</b> Roll Mode (restricts to A / D) <br/>
+		    <b>Note:</b> Defaults to Movement in 2D X/Y Plane
+			</div>
+		</div>
+
+		<div id="astro-stats">
+			<div>
+		        <span id="coordinate-info">x: 0<br>y: 0<br>z: 1</span>	
+            </div>
+			<div>
+                 <span id="fuel-info-state">Fuel Level: 100%</span>
+                <i id="fuel-info-bar" class="fas fa-thermometer-full"></i>
+            </div>
+			<div>
+				<span id="batteryDisplay">Battery Level: 100%
+                    <i class="fa fa-battery-full" style="color:green"></i>
+                </span>
+			</div>
+			<div>
+				<span id="oxygenDisplay">Oxygen Level: 100% <i class="fa fa-battery-full" style="color:green"></i></span>
+			</div>
+		</div>
+
+		<div id="control-info">
+			<div id="control-info-state">DEFAULT (2D Plane Movement)</div>
+			<div id="contol-info-button"></div>
+		</div>
+
+		<script>
+
+            window.addEventListener('load', function() {
+                init();
+                animate();
+            });
+            
+		</script>
+	</body>
+</html>
